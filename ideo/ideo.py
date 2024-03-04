@@ -1,11 +1,9 @@
 import argparse
 import contextlib
-import os
-import re
-import time
-from http.cookies import SimpleCookie
 import json
 import os
+import time
+from http.cookies import SimpleCookie
 
 from curl_cffi import requests
 from curl_cffi.requests import Cookies
@@ -31,16 +29,15 @@ HEADERS = {
 
 
 class ImageGen:
-
     def __init__(self, cookie: str, user_id: str, auth_token: str) -> None:
         self.session: requests.Session = requests.Session()
         HEADERS["user-agent"] = ua.random
-        self.cookies = cookie
+        self.cookie = cookie
         self.user_id = user_id
         self.auth_token = auth_token
         HEADERS["Authorization"] = f"Bearer {auth_token}"
         self.session.headers = HEADERS
-        self.session.cookies = self.parse_cookie_string(cookie)
+        self.session.cookies = self.parse_cookie_string(self.cookie)
 
     @staticmethod
     def parse_cookie_string(cookie_string):
