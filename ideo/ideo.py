@@ -10,12 +10,11 @@ import os
 from curl_cffi import requests
 from curl_cffi.requests import Cookies
 from fake_useragent import UserAgent
-from requests.utils import cookiejar_from_dict
 
 ua = UserAgent(browsers=["edge"])
 
 base_url = "https://ideogram.ai"
-browser_version="edge101"
+browser_version = "edge101"
 
 HEADERS = {
     "Origin": base_url,
@@ -60,7 +59,9 @@ class ImageGen:
             raise Exception("Can not get limit left.")
         data = r.json()
 
-        return int(data["max_creations_per_day"]) - int(data["num_standard_generations_today"])
+        return int(data["max_creations_per_day"]) - int(
+            data["num_standard_generations_today"]
+        )
 
     def _fetch_images_metadata(self, request_id):
         url = (
@@ -74,7 +75,7 @@ class ImageGen:
         else:
             return None
 
-    def get_images(self, prompt: str, is_auto_prompt: str = "OFF") -> list:
+    def get_images(self, prompt: str, is_auto_prompt: str = "AUTO") -> list:
         url = f"{base_url}/api/images/sample"
         self.session.headers["user-agent"] = ua.random
         payload = {
@@ -108,7 +109,9 @@ class ImageGen:
                 print(".", end="", flush=True)
             else:
                 data = image_data.get("responses", [])
-                return [f"{base_url}/api/images/direct/{i['response_id']}" for i in data]
+                return [
+                    f"{base_url}/api/images/direct/{i['response_id']}" for i in data
+                ]
 
     def save_images(
         self,
