@@ -123,6 +123,7 @@ class ImageGen:
             raise
         with contextlib.suppress(FileExistsError):
             os.mkdir(output_dir)
+        print()
         for link in links:
             while os.path.exists(os.path.join(output_dir, f"{png_index}.png")):
                 png_index += 1
