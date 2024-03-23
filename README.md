@@ -4,7 +4,7 @@ About High quality image generation by ideogram. Reverse engineered API.
 ## How to
 - Login to https://ideogram.ai and generate some images.
 - Use `Chrome` or other browsers to inspect the network requests (F12 -> XHR).
-- Clone this REPO -> `git clone https://github.com/flowese/IdeogramWrapper.git`
+- Clone this REPO -> `git clone https://github.com/yihong0618/IdeoImageCreator.git`
 - Copy the cookie.
 - Copy the Bearer token.
 - Copy your user name.
