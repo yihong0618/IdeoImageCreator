@@ -32,16 +32,20 @@ i.save_images("a blue cyber dream", './output')
 
 ## Customization
 
-Customization params:
-aspect_ratio - default "1:1"
-model_version - default "V_0_3" ("V_1_0" and lower take 1 credit)
-style - default "AUTO"
-is_auto_prompt - default "AUTO"
+Customization params: 
+- aspect_ratio - default "1:1"
+- model_version - default "V_0_3" ("V_1_0" and lower take 1 credit)
+- style - default "AUTO"
+- is_auto_prompt - default "AUTO"
 
 Example:
 
 ```python
-i.save_images(prompt = "woman with son turned away walking in a park", aspect_ratio="16:10", model_version="V_1_5", style="PHOTO", output_dir='./output',)
+i.save_images(prompt = "woman with son turned away walking in a park",
+              aspect_ratio="16:10",
+              model_version="V_1_5",
+              style="PHOTO",
+              output_dir='./output',)
 ```
 
 
