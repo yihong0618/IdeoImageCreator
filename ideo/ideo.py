@@ -72,12 +72,19 @@ class ImageGen:
         else:
             return None
 
-    def get_images(self, prompt: str, aspect_ratio: str, model_version: str, style: str, is_auto_prompt: str) -> list:
+    def get_images(
+        self,
+        prompt: str,
+        aspect_ratio: str,
+        model_version: str,
+        style: str,
+        is_auto_prompt: str,
+    ) -> list:
         url = f"{base_url}/api/images/sample"
         self.session.headers["user-agent"] = ua.random
         payload = {
             "aspect_ratio": aspect_ratio,
-            "model_version": model_version,
+            "model_version": model_version,  # the latest version
             "prompt": prompt,
             "raw_or_fun": "raw",
             "speed": "slow",
@@ -114,15 +121,20 @@ class ImageGen:
         self,
         prompt: str,
         output_dir: str,
-        aspect_ratio: str = "1:1",
+        aspect_ratio: str = "16:10",
         model_version: str = "V_0_3",
         style: str = "AUTO",
-        is_auto_prompt: str = "AUTO"
-        
+        is_auto_prompt: str = "AUTO",
     ) -> None:
         png_index = 0
         try:
-            links = self.get_images(prompt=prompt, aspect_ratio=aspect_ratio, model_version=model_version, style=style, is_auto_prompt=is_auto_prompt)
+            links = self.get_images(
+                prompt=prompt,
+                aspect_ratio=aspect_ratio,
+                model_version=model_version,
+                style=style,
+                is_auto_prompt=is_auto_prompt,
+            )
         except Exception as e:
             print(e)
             raise
