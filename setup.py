@@ -2,9 +2,8 @@ from setuptools import find_packages, setup
 
 setup(
     name="ideo",
-    version="0.1.2",
+    version="0.2.0",
     author="yihong0618",
-    author_email="zouzou0208@gmail.com",
     description="High quality image generation by ideogram.ai. Reverse engineered API.",
     url="https://github.com/yihong0618/IdeoImageCreator",
     project_urls={
